@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+
+{% block title %} Home | {% endblock title %}
+
+{% block body %}
+{% if user.is_authenticated %}
+  Hi {{ user.username }}!
+  <p><a href="{% url 'logout' %}"><button type="submit">Log out </button> </a></p>
+  <p><a href="{% url 'chat' %}"><button type="submit">Chat </button> </a></p>
+{% else %}
+  <p>You are not logged in</p>
+  <a href="{% url 'login' %}"><button type="submit">Log In </button> </a><br><br>
+  <form action="register">
+    <button type="submit">Register </button>
+  </form> 
+{% endif %}
+<br>
+<form action="admin">
+  <button type="submit">Admin portal </button>
+</form>
+{% endblock body %}
+

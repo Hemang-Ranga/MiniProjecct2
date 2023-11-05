@@ -1,0 +1,89 @@
+{% comment %} <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Chat Page</title>
+    <style>
+        /* Add some basic styling for the chat messages */
+        #chat-box {
+            border: 1px solid #ccc;
+            padding: 10px;
+            margin-bottom: 10px;
+            max-height: 200px;
+            overflow-y: scroll;
+        }
+
+        .user-message {
+            color: blue;
+        }
+
+        .ai-message {
+            color: green;
+        }
+    </style>
+</head>
+<body>
+    <h1>Chat with AI</h1>
+
+    <div id="chat-box">
+        <div class="chat-conversation">
+            <p class="user-message">
+                {{ user_input }}
+            </p>
+
+            {% for message in ai_response %}
+                <p class="ai-message">{{ message }}</p>
+            {% endfor %}
+        </div>
+    </div>
+
+    <form method="post">
+        {% csrf_token %}
+        <input type="text" name="user_input" id="user-input" placeholder="Type your message here..." style="width: 80%;">
+        <input type="submit" value="Send">
+    </form>
+</body>
+</html> {% endcomment %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Chat Page</title>
+    <style>
+        /* Add some basic styling for the chat messages */
+        #chat-box {
+            border: 1px solid #ccc;
+            padding: 10px;
+            margin-bottom: 10px;
+            max-height: 200px;
+            overflow-y: scroll;
+        }
+
+        .user-message {
+            color: blue;
+        }
+
+        .ai-message {
+            color: green;
+        }
+    </style>
+</head>
+<body>
+    <h1>Chat with AI</h1>
+
+    <div id="chat-box">
+        <div class="chat-conversation">
+            {% for message in conversation %}
+                <p class="{{ message.role }}-message">{{ message.message }}</p>
+            {% endfor %}
+        </div>
+    </div>
+
+    <form method="post">
+        {% csrf_token %}
+        <input type="text" name="user_input" id="user-input" placeholder="Type your message here..." style="width: 80%;">
+        <input type="submit" value="Send">
+    </form>
+</body>
+</html>
