@@ -66,7 +66,7 @@ def chat(request):
 
     if request.method == 'POST':
         user_input = request.POST['user_input']
-        ai_response = 'AI response'#get_ai_response(user_input)  # Call your AI model integration function
+        ai_response = '$62 million and $1.3 billion'#get_ai_response(user_input)  # Call your AI model integration function
 
         # Append the user's input and AI's response to the conversation
         conversation.append({'role': 'user', 'message': user_input})
